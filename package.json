@@ -7,9 +7,11 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "db": "npm run astro db push --remote"
   },
   "dependencies": {
+    "@astrojs/db": "^0.10.3",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.5.18",
     "tailwindcss": "^3.4.3"
