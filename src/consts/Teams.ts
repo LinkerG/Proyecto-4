@@ -17,30 +17,36 @@ export const TEAMS: TTeam[] = [
         email: 'betulo@gmail.com', 
         password: 'test', 
         name: 'Club Nàutic Bétulo', 
-        logo: 'default.png' },
+        logo: 'default.png' 
+    },
     { 
         email: 'aexinoxano@gmail.com', 
         password: 'test', 
         name: 'A.E. Xino Xano Deltebre', 
-        logo: 'default.png' },
+        logo: 'default.png' 
+    },
     { 
         email: 'nauticflix@gmail.com', 
         password: 'test', 
         name: 'Club Nàutic Flix', 
-        logo: 'default.png' },
+        logo: 'default.png' 
+    },
     { 
         email: 'vecambrills@gmail.com', 
         password: 'test', 
-        name: "Vent d'Estrop Vogadors de Cambrills", 
-        logo: 'default.png' },
+        name: "V.E. Vogadors de Cambrills", 
+        logo: 'default.png' 
+    },
     { 
         email: 'remcambrills@gmail.com', 
         password: 'test', 
-        name: 'Club de rem Cambrills', 
-        logo: 'default.png' },
+        name: 'Club de Rem Cambrills', 
+        logo: 'default.png' 
+    },
     { 
         email: 'remmataro@gmail.com', 
         password: 'test', 
         name: 'Club de rem Mataró', 
-        logo: 'default.png' },
+        logo: 'default.png' 
+    },
 ]
