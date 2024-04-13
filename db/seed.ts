@@ -1,7 +1,7 @@
-import { Boat_types, Competitions, db, Teams } from 'astro:db';
+import { Boat_type, Competition, Team, db } from 'astro:db';
 
 export default async function run() {
-  await db.insert(Teams).values([
+  await db.insert(Team).values([
     { email: 'rembadalona@gmail.com', password: 'test', name: 'Club de Rem Badalona', logo: 'default.png' },
     { email: 'nataciobadalona@gmail.com', password: 'test', name: 'Club Natació Badalona', logo: 'default.png' },
     { email: 'betulo@gmail.com', password: 'test', name: 'Club Nàutic Bétulo', logo: 'default.png' },
@@ -12,13 +12,13 @@ export default async function run() {
     { email: 'remmataro@gmail.com', password: 'test', name: 'Club de rem Mataró', logo: 'default.png' },
   ]);
 
-  await db.insert(Boat_types).values([
+  await db.insert(Boat_type).values([
     {id: 1, boat_type: "llaut_med"},
     {id: 2, boat_type: "llagut_cat"},
     {id: 3, boat_type: "batel"},
   ])
 
-  await db.insert(Competitions).values([
+  await db.insert(Competition).values([
     {
       // REGATA LLAUT EJ 3 CALLES
       id: 1, name: "1ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-05-31"), location: "Castelldefells", 
