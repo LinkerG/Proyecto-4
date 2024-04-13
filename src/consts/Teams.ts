@@ -5,48 +5,48 @@ export const TEAMS: TTeam[] = [
         email: 'rembadalona@gmail.com', 
         password: 'test', 
         name: 'Club de Rem Badalona', 
-        logo: 'img/rembadalona.jpg' 
+        logo: 'img/logo/rembadalona.jpg' 
     },
     { 
         email: 'nataciobadalona@gmail.com', 
         password: 'test', 
         name: 'Club Natació Badalona', 
-        logo: 'default.png' 
+        logo: 'img/logo/nataciobadalona.jpg' 
     },
     { 
         email: 'betulo@gmail.com', 
         password: 'test', 
         name: 'Club Nàutic Bétulo', 
-        logo: 'default.png' 
+        logo: 'img/logo/betulo.jpg' 
     },
     { 
         email: 'aexinoxano@gmail.com', 
         password: 'test', 
         name: 'A.E. Xino Xano Deltebre', 
-        logo: 'default.png' 
+        logo: 'img/logo/aexinoxano.jpg' 
     },
     { 
         email: 'nauticflix@gmail.com', 
         password: 'test', 
         name: 'Club Nàutic Flix', 
-        logo: 'default.png' 
+        logo: 'img/logo/flix.jpg' 
     },
     { 
         email: 'vecambrills@gmail.com', 
         password: 'test', 
         name: "V.E. Vogadors de Cambrills", 
-        logo: 'default.png' 
+        logo: 'img/logo/vecambrills.jpg' 
     },
     { 
         email: 'remcambrills@gmail.com', 
         password: 'test', 
         name: 'Club de Rem Cambrills', 
-        logo: 'default.png' 
+        logo: 'img/logo/remcambrills.jpg' 
     },
     { 
         email: 'remmataro@gmail.com', 
         password: 'test', 
         name: 'Club de rem Mataró', 
-        logo: 'default.png' 
+        logo: 'img/logo/remmataro.jpg' 
     },
 ]
