@@ -1,4 +1,4 @@
-export type Team = {
+export type TTeam = {
     email:    string;
     password: string;
     name:     string;
