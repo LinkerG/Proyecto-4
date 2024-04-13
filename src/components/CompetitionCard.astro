@@ -1,0 +1,13 @@
+---
+import type { TCompetition } from '../types/TCompetition'
+
+interface Props {
+    competition: TCompetition
+}
+
+const { competition } = Astro.props
+---
+
+<div>
+    <h2>{competition.name}</h2>
+</div>

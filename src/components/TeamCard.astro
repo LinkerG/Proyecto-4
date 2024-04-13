@@ -1,0 +1,17 @@
+---
+import type { TTeam } from '../types/TTeam'
+
+interface Props {
+	team: TTeam;
+}
+
+const team = Astro.props.team
+
+const url = "/teams/" + team.email
+---
+<article>
+    <a href={url} class=" mx-4 my-6 flex max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <img src={team.logo} alt={team.name} class="w-25 aspect-square">
+        <h5 class="mb-2 text-2xl w-75 font-bold tracking-tight text-gray-900 dark:text-white">{team.name}</h5>
+    </a>
+</article>

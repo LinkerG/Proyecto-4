@@ -1,0 +1,17 @@
+---
+import TeamCard from "../../components/TeamCard.astro";
+import Layout from "../../layouts/Layout.astro";
+
+export const prerender = true
+
+import { TEAMS } from '../../consts/Teams'
+---
+<Layout title="Teams">
+    <section>
+    {
+    TEAMS.map((team) => (
+        <TeamCard team={team} />
+    ))
+    }
+    </section>
+</Layout>

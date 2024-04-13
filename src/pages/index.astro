@@ -1,19 +1,9 @@
 --- 
 import Layout from '../layouts/Layout.astro';
-import { type Team } from '../types/api'
-import { db, Teams, eq } from 'astro:db';
 
-const teams: Team[] = await db.select().from(Teams)
-
-
-console.log(teams);
 
 ---
 
-<Layout title="Inicio">
-	{
-        teams.map((team) => (
-            <h1>{team.name}</h1>
-        ))
-    }
+<Layout title="RemCat">
+    INICIO
 </Layout>

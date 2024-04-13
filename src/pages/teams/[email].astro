@@ -1,0 +1,22 @@
+---
+import TeamCard from '../../components/TeamCard.astro';
+import { TEAMS } from '../../consts/Teams';
+import Layout from '../../layouts/Layout.astro';
+
+export const prerender = true
+
+export function getStaticPaths() {
+	return TEAMS.map(({ email }) => {
+		return { params: { email } }
+	})
+}
+
+const { email } = Astro.params
+
+const [team] = TEAMS.filter((team) => team.email === email)
+---
+
+<Layout title={team.name}>
+	<TeamCard team={team}/>
+</Layout>
+
