@@ -7,7 +7,7 @@ export const prerender = true
 import { TEAMS } from '../../consts/Teams'
 ---
 <Layout title="Teams">
-    <section>
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center mx-6">
     {
     TEAMS.map((team) => (
         <TeamCard team={team} />

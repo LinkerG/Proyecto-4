@@ -5,7 +5,7 @@ export const TEAMS: TTeam[] = [
         email: 'rembadalona@gmail.com', 
         password: 'test', 
         name: 'Club de Rem Badalona', 
-        logo: 'default.png' 
+        logo: 'img/rembadalona.jpg' 
     },
     { 
         email: 'nataciobadalona@gmail.com', 
