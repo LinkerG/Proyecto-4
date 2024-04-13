@@ -28,6 +28,7 @@ const Competitions = defineTable({
     image: column.text(),
     boat_type_id: column.number({ references: () => Boat_types.columns.id }),
     available_categories: column.json(),
+    lines: column.number({default: 4}),
     isCancelled: column.boolean(),
     isActive: column.boolean(),
   }
