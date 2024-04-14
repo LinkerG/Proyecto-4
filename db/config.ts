@@ -11,13 +11,6 @@ const Team = defineTable({
   }
 })
 
-const Boat_type = defineTable({
-  columns: {
-    id: column.number({primaryKey: true, unique: true}),
-    boat_type: column.text(),
-  }
-})
-
 const Competition = defineTable({
   columns: {
     id: column.number({primaryKey: true, unique: true,}),
@@ -26,7 +19,7 @@ const Competition = defineTable({
     date: column.date(),
     location: column.text(),
     image: column.text(),
-    boat_type_id: column.number({ references: () => Boat_type.columns.id }),
+    boat_type_id: column.number(),
     available_categories: column.json(),
     lines: column.number({default: 4}),
     isCancelled: column.boolean(),
@@ -36,9 +29,11 @@ const Competition = defineTable({
 
 const Competition_Result = defineTable({
   columns: {
-    id: column.number({ primaryKey: true }),
+    id: column.text({ primaryKey: true }),
     competition_id: column.number({ references: () => Competition.columns.id }),
     team_id: column.text({ references: () => Team.columns.email }),
+    category: column.text(),
+    isFinal: column.boolean(),
     time: column.text( {default: "DNS"} ),
     distance: column.number(),
     isLeague: column.boolean(),
@@ -50,7 +45,6 @@ const Competition_Result = defineTable({
 export default defineDb({
   tables: {
     Team,
-    Boat_type,
     Competition,
     Competition_Result,
   }

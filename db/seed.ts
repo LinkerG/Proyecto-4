@@ -1,4 +1,5 @@
-import { Boat_type, Competition, Team, db } from 'astro:db';
+import { Competition, Competition_Result, Team, db } from 'astro:db';
+import { generateUUID } from "../src/helpers/generateUUID"
 
 export default async function run() {
   await db.insert(Team).values([
@@ -52,12 +53,6 @@ export default async function run() {
   },
   ]);
 
-  await db.insert(Boat_type).values([
-    {id: 1, boat_type: "llaut_med"},
-    {id: 2, boat_type: "llagut_cat"},
-    {id: 3, boat_type: "batel"},
-  ])
-
   await db.insert(Competition).values([
     {
       // REGATA LLAUT EJ 3 CALLES
@@ -73,6 +68,69 @@ export default async function run() {
       // REGATA BATEL EJ
       id: 3, name: "1ª Regata de Lliga de Batel", year: "23-24", date: new Date("2024-04-13"), location: "Castelldefells", 
       image: "default.png", boat_type_id: 3, available_categories: {"A":"A", "I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, isCancelled: false, isActive: true
+    },
+  ])
+
+  await db.insert(Competition_Result).values([
+    {
+      id: generateUUID(),
+      competition_id: 3,
+      team_id: "rembadalona@gmail.com",
+      isFinal: false,
+      category: "SM",
+      time: "DNS",
+      distance: 1400,
+      isLeague: true,
+      isChampionship: false,
+      isActive: true
+    },
+    {
+      id: generateUUID(),
+      competition_id: 3,
+      team_id: "rembadalona@gmail.com",
+      isFinal: false,
+      category: "SF",
+      time: "DNS",
+      distance: 1400,
+      isLeague: true,
+      isChampionship: false,
+      isActive: true
+    },
+    {
+      id: generateUUID(),
+      competition_id: 3,
+      team_id: "rembadalona@gmail.com",
+      isFinal: false,
+      category: "JM",
+      time: "DNS",
+      distance: 1400,
+      isLeague: true,
+      isChampionship: false,
+      isActive: true
+    },
+    {
+      id: generateUUID(),
+      competition_id: 3,
+      team_id: "remmataro@gmail.com",
+      isFinal: false,
+      category: "SF",
+      time: "DNS",
+      distance: 1400,
+      isLeague: true,
+      isChampionship: false,
+      isActive: true
+    },
+    {
+      id: generateUUID(),
+      competition_id: 3,
+      team_id: "remmataro@gmail.com",
+      isFinal: false,
+      category: "JM",
+      time: "DNS",
+      distance: 1400,
+      isLeague: true,
+      isChampionship: false,
+      isActive: true
     },
   ])
 }
