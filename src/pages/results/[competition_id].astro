@@ -1,0 +1,18 @@
+---
+import vercel from '@astrojs/vercel'
+import { db, eq, Competition } from 'astro:db';
+import CompetitionCard from '../../components/CompetitionCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import type { TCompetition } from '../../types/TCompetition';
+
+export const prerender = false
+
+const { competition_id } = Astro.params
+const competitionId = parseInt(competition_id);
+const competitions: TCompetition[] = await db.select().from(Competition)
+
+const [competition] = competitions.filter((competition) => competition.id === competitionId)
+---
+<Layout title={"Competicion"}>
+	<CompetitionCard competition={competition}/>
+</Layout>

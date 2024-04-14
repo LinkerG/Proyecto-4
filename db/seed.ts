@@ -61,18 +61,18 @@ export default async function run() {
   await db.insert(Competition).values([
     {
       // REGATA LLAUT EJ 3 CALLES
-      id: 1, name: "1ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-05-31"), location: "Castelldefells", 
-      image: "default.txt", boat_type_id: 1, available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 3, isCancelled: false, isActive: true
+      id: 1, name: "1ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-04-14"), location: "Castelldefells", 
+      image: "default.png", boat_type_id: 1, available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 3, isCancelled: false, isActive: true
     },
     {
       // REGATA LLAUT EJ 4 CALLES
-      id: 2, name: "2ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-05-31"), location: "Castelldefells", 
-      image: "default.txt", boat_type_id: 1, available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 4, isCancelled: false, isActive: true
+      id: 2, name: "2ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-05-12"), location: "Flix", 
+      image: "default.png", boat_type_id: 1, available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 4, isCancelled: false, isActive: true
     },
     {
       // REGATA BATEL EJ
-      id: 3, name: "1ª Regata de Lliga de Batel", year: "23-24", date: new Date("2024-05-30"), location: "Castelldefells", 
-      image: "default.txt", boat_type_id: 3, available_categories: {"A":"A", "I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, isCancelled: false, isActive: true
+      id: 3, name: "1ª Regata de Lliga de Batel", year: "23-24", date: new Date("2024-04-13"), location: "Castelldefells", 
+      image: "default.png", boat_type_id: 3, available_categories: {"A":"A", "I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, isCancelled: false, isActive: true
     },
   ])
 }

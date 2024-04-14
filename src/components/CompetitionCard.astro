@@ -5,9 +5,23 @@ interface Props {
     competition: TCompetition
 }
 
+export const prerender = false
+
 const { competition } = Astro.props
+const url = "/results/" + competition.id
+const formattedDate = competition.date.getDate() + "/" + (competition.date.getMonth()+1) + "/" + competition.date.getFullYear()
 ---
 
-<div>
-    <h2>{competition.name}</h2>
-</div>
+<article class=" p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"> 
+    <a href={url} class="w-full flex max-w-sm min-w-100">
+        <!-- <img
+         loading="lazy"
+         src={competition.image} 
+         alt={competition.name} 
+            class="rounded-lg w-1/5 mr-4 max-w-25 h-auto object-contain object-center"> -->
+        <div class="flex flex-col justify-center w-4/5">
+            <h5 class="w-100mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{competition.name}</h5>
+            <p>{formattedDate} {competition.location}</p>
+        </div>
+    </a>
+</article>
