@@ -2,7 +2,7 @@
 import { db, eq, Competition_Result} from 'astro:db';
 import type { TCompetitionResults } from '../../types/TCompetitionResults'
 import Layout from '../../layouts/Layout.astro';
-import CategoryComponent from '../../components/CategoryComponent.astro';
+import ResultComponent from '../../components/ResultComponent.astro';
 import { organizeResultsByCategoryAndFinal } from '../../helpers/organizeResultsByCategoryAndFinal'
 export const prerender = false
 
@@ -14,11 +14,5 @@ const filteredResults = results.filter(result => result.competition_id === compe
 const resultsByCategoryAndFinal: {[key: string]: {[key: string]: TCompetitionResults[]}} = organizeResultsByCategoryAndFinal(filteredResults)
 ---
 <Layout title={"Competicion"}>
-    <section>
-    {
-    Object.keys(resultsByCategoryAndFinal).map(category => {        
-        return <CategoryComponent category={category} results={resultsByCategoryAndFinal[category]}/>
-    })
-    }
-    </section>
+    <ResultComponent categories={Object.keys(resultsByCategoryAndFinal)} results={resultsByCategoryAndFinal}/>
 </Layout>

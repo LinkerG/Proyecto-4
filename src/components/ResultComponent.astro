@@ -1,0 +1,23 @@
+---
+import type { TCompetitionResults } from '../types/TCompetitionResults'
+import { Tabs } from './Tabs'
+
+interface CategoryResults {
+  true: TCompetitionResults[];
+  false: TCompetitionResults[];
+}
+
+interface Props {
+  categories: string[];
+  results: any;
+}
+
+const { categories, results } = Astro.props
+let tabsData = []
+categories.forEach(category => {
+  tabsData.push({title: category, content: results[category]})
+});
+console.log(tabsData);
+
+---
+<Tabs tabs={tabsData} client:visible />
