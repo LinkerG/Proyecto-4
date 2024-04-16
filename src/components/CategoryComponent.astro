@@ -1,20 +1,44 @@
 ---
 import type { TCompetitionResults } from '../types/TCompetitionResults'
+interface CategoryResults {
+  true: TCompetitionResults[];
+  false: TCompetitionResults[];
+}
 
 interface Props {
-    category: string,
-    results: TCompetitionResults[]
+  category: string;
+  results: {
+    [key: string]: TCompetitionResults[];
+  };
 }
+
 const { category, results } = Astro.props
 ---
 <article>
     <h1>{category}</h1>
-    <ul>
-      {
-        results.map((result) => {
-          return <li>{result.team_id} / {result.time}</li>;
-        })
-      }
-    </ul>
+    <div>
+      <h2>Semifinales</h2>
+      <ul>
+        {results.semi.map((result, index) => (
+          <li>
+            <p>Equipo: {result.team_id}</p>
+            <p>Tiempo: {result.time}</p>
+            <p>Distancia: {result.distance}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h2>Final</h2>
+      <ul>
+        {results.final.map((result, index) => (
+          <li>
+            <p>Equipo: {result.team_id}</p>
+            <p>Tiempo: {result.time}</p>
+            <p>Distancia: {result.distance}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   </article>
   

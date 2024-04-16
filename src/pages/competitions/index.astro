@@ -6,9 +6,6 @@ import { db, Competition, } from 'astro:db';
 
 const competitions: TCompetition[] = await db.select().from(Competition)
 const sortedCompetitions = competitions.slice().sort((dateA, dateB) => dateA.date.getTime() - dateB.date.getTime());
-
-console.log(sortedCompetitions);
-
 ---
 <Layout title="Competiciones">
     <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center mx-6">

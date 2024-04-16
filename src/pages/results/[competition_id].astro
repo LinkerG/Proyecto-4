@@ -17,20 +17,25 @@ const competitions: TCompetition[] = await db.select().from(Competition)
 const [competition] = competitions.filter((competition) => competition.id === competitionId)
 const results: TCompetitionResults[] = await db.select().from(Competition_Result)
 const filteredResults = results.filter(result => result.competition_id === competitionId); 
-const resultsByCategory: {[key: string]: TCompetitionResults[]} = filteredResults.reduce((acc, result) => {
+const resultsByCategoryAndFinal: {[key: string]: {[key: string]: TCompetitionResults[]}} = filteredResults.reduce((acc, result) => {
   if (!acc[result.category]) {
-    acc[result.category] = [];
+    acc[result.category] = { semi: [], final: [] }; // Inicializa un objeto para almacenar resultados por categoría y isFinal
   }
-  acc[result.category].push(result);
+  const finalKey = result.isFinal ? 'final' : 'semi';
+  acc[result.category][finalKey].push(result);
   return acc;
 }, {});
-console.log(Object.keys(resultsByCategory));
+interface CategoryResults {
+  true: TCompetitionResults[];
+  false: TCompetitionResults[];
+}
+
 ---
 <Layout title={"Competicion"}>
     <section>
     {
-    Object.keys(resultsByCategory).map(category => {
-        return <CategoryComponent category={category} results={resultsByCategory[category]}/>
+    Object.keys(resultsByCategoryAndFinal).map(category => {        
+        return <CategoryComponent category={category} results={resultsByCategoryAndFinal[category]}/>
     })
     }
     </section>
