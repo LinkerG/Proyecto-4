@@ -28,17 +28,18 @@ const { category, results } = Astro.props
         ))}
       </ul>
     </div>
+    <hr>
     <div>
       <h2>Final</h2>
-      <ul>
+        <ul>
         {results.final.map((result, index) => (
-          <li>
-            <p>Equipo: {result.team_id}</p>
-            <p>Tiempo: {result.time}</p>
-            <p>Distancia: {result.distance}</p>
-          </li>
+            <li>
+                <p>Equipo: {result.team_id}</p>
+                <p>Tiempo: {result.time}</p>
+                <p>Distancia: {result.distance}</p>
+            </li>
         ))}
-      </ul>
+        </ul>
     </div>
-  </article>
-  
+</article>
+<hr style="border: 1px solid red">

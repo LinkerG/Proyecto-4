@@ -3,7 +3,7 @@ import { generateUUID } from "../src/helpers/generateUUID"
 
 export default async function run() {
   await db.insert(Team).values([
-    { 
+  { 
       email: 'rembadalona@gmail.com', 
       password: 'test', 
       name: 'Club de Rem Badalona', 
