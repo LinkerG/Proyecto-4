@@ -42,13 +42,23 @@ export const Tabs = ({ tabs }) => {
                     id={"link" + (index + 1)}
                     key={index}
                   >
-                    {tab.content.semi.map((result) => (
-                      <p>{result.id}</p>
+                    <div>
+                    {tab.content.semi.length !== 0 &&(
+                      <Result isFinal = {false} data = {tab.content.semi} />
+                    )}
+                    </div>
+                    <div>
+                    {tab.content.final.length !== 0 && tab.content.final.map((result) => (
+                      <div>
+                      <p>{result.team_id}</p>
+                      <p>{result.time} / {result.distance}</p>
+                      <p>{result.category}</p>
+                      </div>
                     ))}
+                    </div>
                   </div>
                 )
               )}
-
               </div>
             </div>
           </div>

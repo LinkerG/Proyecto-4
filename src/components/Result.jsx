@@ -1,8 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 const Result = ({ final, data }) => {
     return (
-        <h1>Hola</h1>
+        <Fragment>
+            {final ? (
+                <h1>Final</h1>
+            ) : (
+                <h1>Eliminatoria</h1>
+            )}
+            <ul>
+            {data.map((result) => (
+                <li>
+                    <p>{result.team_id}</p>
+                    <p>{result.time}</p>
+                    <p>{result.distance}</p>
+                </li>
+            ))}
+            </ul>
+        </Fragment>
     );
 }
 
