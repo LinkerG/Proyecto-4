@@ -5,9 +5,10 @@ import type { TCompetition } from '../../types/TCompetition';
 import type { TCompetitionResults } from '../../types/TCompetitionResults'
 import { Competition_Result } from 'astro:db';
 import { BOAT_TYPES } from '../../consts/BoatTypes'
+import CategoryComponent from '../../components/CategoryComponent.astro';
+import { Debug } from 'astro:components';
 
 export const prerender = false
-
 const { competition_id } = Astro.params
 const competitionId = parseInt(competition_id);
 
@@ -16,7 +17,21 @@ const competitions: TCompetition[] = await db.select().from(Competition)
 const [competition] = competitions.filter((competition) => competition.id === competitionId)
 const results: TCompetitionResults[] = await db.select().from(Competition_Result)
 const filteredResults = results.filter(result => result.competition_id === competitionId); 
+const resultsByCategory: {[key: string]: TCompetitionResults[]} = filteredResults.reduce((acc, result) => {
+  if (!acc[result.category]) {
+    acc[result.category] = [];
+  }
+  acc[result.category].push(result);
+  return acc;
+}, {});
+console.log(Object.keys(resultsByCategory));
 ---
 <Layout title={"Competicion"}>
-	
+    <section>
+    {
+    Object.keys(resultsByCategory).map(category => {
+        return <CategoryComponent category={category} results={resultsByCategory[category]}/>
+    })
+    }
+    </section>
 </Layout>

@@ -4,10 +4,10 @@ import type { TCompetition } from '../types/TCompetition'
 interface Props {
     competition: TCompetition
 }
+const { competition } = Astro.props
 
 export const prerender = false
 
-const { competition } = Astro.props
 const url = "/results/" + competition.id
 const formattedDate = competition.date.getDate() + "/" + (competition.date.getMonth()+1) + "/" + competition.date.getFullYear()
 ---
