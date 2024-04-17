@@ -43,18 +43,14 @@ export const Tabs = ({ tabs }) => {
                     key={index}
                   >
                     <div>
-                    {tab.content.semi.length !== 0 &&(
-                      <Result isFinal = {false} data = {tab.content.semi} />
+                    {tab.content.semi.length !== 0 && (
+                      <Result final={false} data={tab.content.semi} />
                     )}
                     </div>
                     <div>
-                    {tab.content.final.length !== 0 && tab.content.final.map((result) => (
-                      <div>
-                      <p>{result.team_id}</p>
-                      <p>{result.time} / {result.distance}</p>
-                      <p>{result.category}</p>
-                      </div>
-                    ))}
+                    {tab.content.final.length !== 0 && (
+                      <Result final={true} data={tab.content.final} />
+                    )}
                     </div>
                   </div>
                 )

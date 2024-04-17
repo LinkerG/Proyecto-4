@@ -11,9 +11,7 @@ const Result = ({ final, data }) => {
             <ul>
             {data.map((result) => (
                 <li>
-                    <p>{result.team_id}</p>
-                    <p>{result.time}</p>
-                    <p>{result.distance}</p>
+                    <p>{result.team_id} / {result.time} / {result.distance}</p>
                 </li>
             ))}
             </ul>
