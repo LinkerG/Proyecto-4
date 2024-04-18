@@ -57,17 +57,17 @@ export default async function run() {
     {
       // REGATA LLAUT EJ 3 CALLES
       id: 1, name: "1ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-04-14"), location: "Castelldefells", 
-      image: "default.png", boat_type_id: 1, available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 3, isCancelled: false, isActive: true
+      image: "default.png", boat_type_id: 1, available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 3, line_distance: 350, isCancelled: false, isActive: true
     },
     {
       // REGATA LLAUT EJ 4 CALLES
       id: 2, name: "2ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-05-12"), location: "Flix", 
-      image: "default.png", boat_type_id: 1, available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 4, isCancelled: false, isActive: true
+      image: "default.png", boat_type_id: 1, available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 4, line_distance: 350, isCancelled: false, isActive: true
     },
     {
       // REGATA BATEL EJ
       id: 3, name: "1ª Regata de Lliga de Batel", year: "23-24", date: new Date("2024-04-13"), location: "Castelldefells", 
-      image: "default.png", boat_type_id: 3, available_categories: {"A":"A", "I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, isCancelled: false, isActive: true
+      image: "default.png", boat_type_id: 3, available_categories: {"A":"A", "I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 4, line_distance: 500, isCancelled: false, isActive: true
     },
   ])
 
@@ -77,6 +77,7 @@ export default async function run() {
       competition_id: 3,
       team_id: "rembadalona@gmail.com",
       isFinal: false,
+      group: 1,
       category: "SM",
       time: "DNS",
       distance: 1400,
@@ -89,6 +90,7 @@ export default async function run() {
       competition_id: 3,
       team_id: "rembadalona@gmail.com",
       isFinal: false,
+      group: 1,
       category: "SF",
       time: "5:45",
       distance: 1400,
@@ -101,6 +103,7 @@ export default async function run() {
       competition_id: 3,
       team_id: "rembadalona@gmail.com",
       isFinal: false,
+      group: 1,
       category: "JM",
       time: "DNS",
       distance: 1400,
@@ -113,6 +116,7 @@ export default async function run() {
       competition_id: 3,
       team_id: "remmataro@gmail.com",
       isFinal: false,
+      group: 1,
       category: "SF",
       time: "5:40",
       distance: 1400,
@@ -125,6 +129,7 @@ export default async function run() {
       competition_id: 3,
       team_id: "betulo@gmail.com",
       isFinal: false,
+      group: 1,
       category: "SF",
       time: "6:45",
       distance: 1400,
@@ -137,6 +142,7 @@ export default async function run() {
       competition_id: 3,
       team_id: "remmataro@gmail.com",
       isFinal: false,
+      group: 1,
       category: "JM",
       time: "DNS",
       distance: 1400,
@@ -149,8 +155,9 @@ export default async function run() {
       competition_id: 3,
       team_id: "rembadalona@gmail.com",
       isFinal: true,
+      group: 1,
       category: "SF",
-      time: "DNS",
+      time: "4:50",
       distance: 1400,
       isLeague: true,
       isChampionship: false,
@@ -161,8 +168,9 @@ export default async function run() {
       competition_id: 3,
       team_id: "remmataro@gmail.com",
       isFinal: true,
+      group: 1,
       category: "SF",
-      time: "DNS",
+      time: "4:40",
       distance: 1400,
       isLeague: true,
       isChampionship: false,
@@ -173,8 +181,9 @@ export default async function run() {
       competition_id: 3,
       team_id: "betulo@gmail.com",
       isFinal: true,
+      group: 1,
       category: "SF",
-      time: "DNS",
+      time: "4:51",
       distance: 1400,
       isLeague: true,
       isChampionship: false,

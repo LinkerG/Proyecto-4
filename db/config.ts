@@ -22,6 +22,7 @@ const Competition = defineTable({
     boat_type_id: column.number(),
     available_categories: column.json(),
     lines: column.number({default: 4}),
+    line_distance: column.number({default: 350}),
     isCancelled: column.boolean(),
     isActive: column.boolean(),
   }
@@ -34,6 +35,7 @@ const Competition_Result = defineTable({
     team_id: column.text({ references: () => Team.columns.email }),
     category: column.text(),
     isFinal: column.boolean(),
+    group: column.number(),
     time: column.text( {default: "DNS"} ),
     distance: column.number(),
     isLeague: column.boolean(),
