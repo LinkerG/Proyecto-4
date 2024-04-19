@@ -4,6 +4,7 @@ export type TCompetitionResults = {
     team_id:        string;
     category:       string;
     isFinal:        boolean;
+    group:          number;
     time:           string;
     distance:       number;
     isLeague:       boolean;

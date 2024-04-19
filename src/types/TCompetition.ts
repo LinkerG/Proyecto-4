@@ -10,6 +10,7 @@ export type TCompetition = {
     boat_type_id:         number;
     available_categories: TAvailableCategories;
     lines:                number;
+    line_distance:        number;         
     isCancelled:          boolean;
     isActive:             boolean;
 }
