@@ -1,7 +1,32 @@
 ---
 import AdminLayout from "../../layouts/AdminLayout.astro";
+import { TEAMS } from '../../consts/Teams'
+import TeamCard from "../../components/TeamCard.astro";
 
+export const prerender = true
 ---
 <AdminLayout title="Teams">
-<h1>Teams</h1>
+    <table class="min-w-80 divide-y divide-gray-200">
+        <thead class="bg-gray-500">
+            <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">Logo</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">Nombre</th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">Email</th>
+            </tr>
+        </thead>
+        <tbody class="bg-gray-500 divide-y divide-gray-200">
+            {
+                TEAMS.map((team) => (
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap"><img class="max-w-5 max-h-5" src={team.logo} alt={team.name}></td>
+                        <td class="px-6 py-4 whitespace-nowrap">{team.name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{team.email}</td>
+                    </tr>
+                ))
+            }
+        </tbody>
+    </table>
 </AdminLayout>
+
+<style>
+</style>
