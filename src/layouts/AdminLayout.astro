@@ -1,6 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import AdminAside from '../components/admin/AdminAside';
+import AdminNav from '../components/admin/AdminNav';
 interface Props {
 	title: string;
 }
@@ -19,9 +19,9 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<ViewTransitions />
 	</head>
-	<body>
-		<main>
-            <AdminAside client:visible transition:persist/>
+	<body class="flex flex-col h-screen">
+		<AdminNav client:visible transition:persist/>
+		<main class="flex-grow bg-white">
 			<slot />
 		</main>
 	</body>
@@ -31,6 +31,5 @@ const { title } = Astro.props;
 		font-family: system-ui, sans-serif;
 		background: #13151a;
 		background-size: 224px;
-		
 	}
 </style>
