@@ -8,6 +8,7 @@ const Team = defineTable({
     password: column.text(),
     name: column.text(),
     logo: column.text(),
+    isActive: column.boolean(),
   }
 })
 
