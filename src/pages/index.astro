@@ -1,7 +1,9 @@
 --- 
 import Layout from '../layouts/Layout.astro';
+import ButtonUsage from "../components/ButtonUsage";
+
 ---
 
 <Layout title="RemCat">
-    INICIO
+    <ButtonUsage client:only="react"/>
 </Layout>
