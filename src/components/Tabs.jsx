@@ -15,11 +15,11 @@ export const Tabs = ({ tabs }) => {
             {tabs.map((tab, index) => (
               <li className="-mb-px mr-2 last:mr-0 flex-auto text-center" key={index}>
                 <a
-                    className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                    (openTab === index + 1
-                      ? "text-white bg-600"
-                      : "text-600 bg-white")
+                  className={
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  (openTab === index + 1
+                    ? "text-white bg-600"
+                    : "text-600 bg-white")
                   }
                   onClick={() => {
                     setOpenTab(index + 1);
