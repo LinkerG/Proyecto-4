@@ -6,14 +6,14 @@ import Layout from '../../layouts/Layout.astro';
 export const prerender = true
 
 export function getStaticPaths() {
-	return TEAMS.map(({ email }) => {
-		return { params: { email } }
+	return TEAMS.map(({ slug }) => {
+		return { params: { slug } }
 	})
 }
 
-const { email } = Astro.params
+const { slug } = Astro.params
 
-const [team] = TEAMS.filter((team) => team.email === email)
+const [team] = TEAMS.filter((team) => team.slug === slug)
 ---
 
 <Layout title={team.name}>

@@ -1,6 +1,6 @@
 export type TTeam = {
-    email:    string;
-    password: string;
+    slug:     string;
     name:     string;
     logo:     string;
+    isActive: boolean;
 }

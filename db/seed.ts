@@ -4,57 +4,49 @@ import { generateUUID } from "../src/helpers/generateUUID"
 export default async function run() {
   await db.insert(Team).values([
   { 
-      email: 'rembadalona@gmail.com', 
-      password: 'test', 
+      slug: 'rembadalona', 
       name: 'Club de Rem Badalona', 
       logo: 'img/logo/rembadalona.jpg' ,
       isActive: true,
   },
   { 
-      email: 'nataciobadalona@gmail.com', 
-      password: 'test', 
+      slug: 'nataciobdn', 
       name: 'Club Natació Badalona', 
-      logo: 'img/logo/nataciobadalona.jpg' ,
+      logo: 'img/logo/nataciobdn.jpg' ,
       isActive: true,
   },
   { 
-      email: 'betulo@gmail.com', 
-      password: 'test', 
+      slug: 'betulo', 
       name: 'Club Nàutic Bétulo', 
       logo: 'img/logo/betulo.jpg' ,
       isActive: true,
   },
   { 
-      email: 'aexinoxano@gmail.com', 
-      password: 'test', 
+      slug: 'aexinoxano', 
       name: 'A.E. Xino Xano Deltebre', 
       logo: 'img/logo/aexinoxano.jpg' ,
       isActive: true,
   },
   { 
-      email: 'nauticflix@gmail.com', 
-      password: 'test', 
+      slug: 'flix', 
       name: 'Club Nàutic Flix', 
       logo: 'img/logo/flix.jpg' ,
       isActive: true,
   },
   { 
-      email: 'vecambrills@gmail.com', 
-      password: 'test', 
+      slug: 'vecambrills', 
       name: "V.E. Vogadors de Cambrills", 
       logo: 'img/logo/vecambrills.jpg' ,
       isActive: true,
   },
   { 
-      email: 'remcambrills@gmail.com', 
-      password: 'test', 
+      slug: 'remcambrills', 
       name: 'Club de Rem Cambrills', 
       logo: 'img/logo/remcambrills.jpg' ,
       isActive: true,
   },
   { 
-      email: 'remmataro@gmail.com', 
-      password: 'test', 
+      slug: 'remmataro', 
       name: 'Club de rem Mataró', 
       logo: 'img/logo/remmataro.jpg' ,
       isActive: true,
@@ -83,7 +75,7 @@ export default async function run() {
     {
       id: generateUUID(),
       competition_id: 3,
-      team_id: "rembadalona@gmail.com",
+      team_id: "rembadalona",
       isFinal: false,
       group: 1,
       category: "SM",
@@ -96,7 +88,7 @@ export default async function run() {
     {
       id: generateUUID(),
       competition_id: 3,
-      team_id: "rembadalona@gmail.com",
+      team_id: "rembadalona",
       isFinal: false,
       group: 1,
       category: "SF",
@@ -109,7 +101,7 @@ export default async function run() {
     {
       id: generateUUID(),
       competition_id: 3,
-      team_id: "rembadalona@gmail.com",
+      team_id: "rembadalona",
       isFinal: false,
       group: 1,
       category: "JM",
@@ -122,7 +114,7 @@ export default async function run() {
     {
       id: generateUUID(),
       competition_id: 3,
-      team_id: "remmataro@gmail.com",
+      team_id: "remmataro",
       isFinal: false,
       group: 1,
       category: "SF",
@@ -135,7 +127,7 @@ export default async function run() {
     {
       id: generateUUID(),
       competition_id: 3,
-      team_id: "betulo@gmail.com",
+      team_id: "betulo",
       isFinal: false,
       group: 1,
       category: "SF",
@@ -148,7 +140,7 @@ export default async function run() {
     {
       id: generateUUID(),
       competition_id: 3,
-      team_id: "remmataro@gmail.com",
+      team_id: "remmataro",
       isFinal: false,
       group: 1,
       category: "JM",
@@ -161,7 +153,7 @@ export default async function run() {
     {
       id: generateUUID(),
       competition_id: 3,
-      team_id: "rembadalona@gmail.com",
+      team_id: "rembadalona",
       isFinal: true,
       group: 1,
       category: "SF",
@@ -174,7 +166,7 @@ export default async function run() {
     {
       id: generateUUID(),
       competition_id: 3,
-      team_id: "remmataro@gmail.com",
+      team_id: "remmataro",
       isFinal: true,
       group: 1,
       category: "SF",
@@ -187,7 +179,7 @@ export default async function run() {
     {
       id: generateUUID(),
       competition_id: 3,
-      team_id: "betulo@gmail.com",
+      team_id: "betulo",
       isFinal: true,
       group: 1,
       category: "SF",
