@@ -15,16 +15,11 @@
     "@astrojs/react": "^3.3.0",
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vercel": "^7.5.2",
-    "@emotion/styled": "^11.11.5",
-    "@mui/icons-material": "^5.15.15",
-    "@mui/material": "^5.15.15",
-    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.25",
     "astro": "^4.5.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.1.8",
     "tailwindcss": "^3.4.3",
     "uuid": "^9.0.1"
   }
