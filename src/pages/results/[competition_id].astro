@@ -13,6 +13,8 @@ const results: TCompetitionResults[] = await db.select().from(Competition_Result
 const filteredResults = results.filter(result => result.competition_id === competition_id);
 // Organiza las competiciones por Categoria => {[semi] => [resultados], [final] => [resultados]}
 const resultsByCategoryAndFinal: {[key: string]: {[key: string]: TCompetitionResults[]}} = organizeResultsByCategoryAndFinal(filteredResults);
+console.log(resultsByCategoryAndFinal);
+
 
 ---
 <Layout title={"Competicion"}>

@@ -12,7 +12,7 @@ const AdminNav = () => {
         <nav className="bg-gray-800 text-white relative z-10 py-4">
             {/* Navbar cuando es grande */}
             <div className="hidden lg:flex justify-between items-center p-4 mx-20">
-                <div className=""><h1 className="select-none ml text-2xl">RemCat 🚣‍♂️</h1></div>
+                <div className=""><h1 className="select-none ml text-2xl">RemCat 🚣‍♂️ / ADMIN</h1></div>
                 <ul className="flex">
                     <li className="px-4 hover:bg-gray-700 text-xl"><a href="/admin">Inicio</a></li>
                     <li className="px-4 hover:bg-gray-700 text-xl"><a href="/admin/competitions">Competiciones</a></li>
@@ -23,7 +23,7 @@ const AdminNav = () => {
 
             {/* Menú hamburguesa cuando es pequeño */}
             <div className="lg:hidden flex justify-between items-center p-4 z-20">
-                <div><h1 className="text-xl">RemCat 🚣‍♂️</h1></div>
+                <div><h1 className="text-xl">RemCat 🚣‍♂️ / ADMIN</h1></div>
                 <button onClick={toggleMenu} className="text-white">
                     {/* Icono de hamburguesa */}
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 lg:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">

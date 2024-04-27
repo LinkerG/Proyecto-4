@@ -1,6 +1,6 @@
 ---
 import type { TCompetitionResults } from '../types/TCompetitionResults'
-import { Tabs } from './Tabs'
+import Tabs from './Tabs'
 
 interface CategoryResults {
   true: TCompetitionResults[];
@@ -20,4 +20,7 @@ categories.forEach(category => {
 console.log(tabsData);
 
 ---
-<Tabs tabs={tabsData} client:visible />
+<div class="flex justify-center align-items-center h-full w-full">
+  <Tabs tabs={tabsData} client:visible />
+</div>
+
