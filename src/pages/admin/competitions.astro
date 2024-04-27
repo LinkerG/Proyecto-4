@@ -1,12 +1,13 @@
 ---
+// TODO:
+//  - Filtros funcionales
+//  - Añadir filtros
 import { db, Competition } from "astro:db";
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import type { TCompetition } from "../../types/TCompetition";
 
 const COMPETITIONS: TCompetition[] = await db.select().from(Competition);
 export const prerender = false
-console.log(COMPETITIONS);
-
 
 ---
 <AdminLayout title="Competitions">
