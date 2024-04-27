@@ -13,24 +13,29 @@ if (Astro.request.method === 'POST') {
   const uuid = generateUUID();
   const name = formData.get('name');
   const date = new Date(formData.get('date').toString()); // Formato a Date
-  const year = getYearFromDate(date);
+  const year: string = getYearFromDate(date);
   const location = formData.get('location');
+  const boat_type = formData.get('boat_type');
   const lines = formData.get('lines');
   const line_distance = formData.get('line_distance');
+  console.log(uuid);
   
-  if( typeof name === 'string' && typeof location === 'string') {
+  if(typeof uuid === 'string' && typeof name === 'string' && typeof location === 'string') {
     console.log(formData);
-    /*await db.insert(Competition).values({
+    await db.insert(Competition).values({
+        // @ts-ignore // Esto funciona pero por alguna razón el IDE marca error pero inserta bien y no hay problemas
          id: uuid,
          name: name,
          year: year,
          date: date, 
          location: location,
+         image: "",
+         boat_type: boat_type,
          lines: lines,
          line_distance: line_distance,
          isCancelled: false,
          isActive: true
-        });*/
+        });
     
     // FIRE OK POPUP
   }

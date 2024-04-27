@@ -20,7 +20,6 @@ const Competition = defineTable({
     location: column.text(),
     image: column.text(),
     boat_type: column.text(),
-    available_categories: column.json(),
     lines: column.number({default: 4}),
     line_distance: column.number({default: 350}),
     isCancelled: column.boolean(),

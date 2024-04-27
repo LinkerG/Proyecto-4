@@ -1,5 +1,3 @@
-import type { TAvailableCategories } from "./TAvailableCategories";
-
 export type TCompetition = {
     id:                   string;
     name:                 string;
@@ -8,7 +6,6 @@ export type TCompetition = {
     location:             string;
     image:                string;
     boat_type:            string;
-    available_categories: TAvailableCategories;
     lines:                number;
     line_distance:        number;
     isCancelled:          boolean;

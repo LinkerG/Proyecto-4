@@ -57,17 +57,17 @@ export default async function run() {
     {
       // REGATA LLAUT EJ 3 CALLES
       id: "1", name: "1ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-04-14"), location: "Castelldefells", 
-      image: "default.png", boat_type: "llaut_med", available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 3, line_distance: 350, isCancelled: false, isActive: true
+      image: "default.png", boat_type: "llaut_med", lines: 3, line_distance: 350, isCancelled: false, isActive: true
     },
     {
       // REGATA LLAUT EJ 4 CALLES
       id: "2", name: "2ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-05-12"), location: "Flix", 
-      image: "default.png", boat_type: "llaut_med", available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 4, line_distance: 350, isCancelled: false, isActive: true
+      image: "default.png", boat_type: "llaut_med", lines: 4, line_distance: 350, isCancelled: false, isActive: true
     },
     {
       // REGATA BATEL EJ
       id: "3", name: "1ª Regata de Lliga de Batel", year: "23-24", date: new Date("2024-04-13"), location: "Castelldefells", 
-      image: "default.png", boat_type: "batel", available_categories: {"A":"A", "I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 4, line_distance: 500, isCancelled: false, isActive: true
+      image: "default.png", boat_type: "batel", lines: 4, line_distance: 500, isCancelled: false, isActive: true
     },
   ])
 

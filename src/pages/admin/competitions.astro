@@ -5,6 +5,7 @@ import type { TCompetition } from "../../types/TCompetition";
 
 const COMPETITIONS: TCompetition[] = await db.select().from(Competition);
 export const prerender = false
+console.log(COMPETITIONS);
 
 
 ---
