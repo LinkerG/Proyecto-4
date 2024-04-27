@@ -20,7 +20,7 @@ if (Astro.request.method === 'POST') {
   
   if( typeof name === 'string' && typeof location === 'string') {
     console.log(formData);
-    await db.insert(Competition).values({
+    /*await db.insert(Competition).values({
          id: uuid,
          name: name,
          year: year,
@@ -30,7 +30,7 @@ if (Astro.request.method === 'POST') {
          line_distance: line_distance,
          isCancelled: false,
          isActive: true
-        });
+        });*/
     
     // FIRE OK POPUP
   }
