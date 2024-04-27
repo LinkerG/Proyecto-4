@@ -1,0 +1,44 @@
+---
+import { db } from "astro:db";
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import type { TTeam } from "../../types/TTeam";
+import { Team } from "astro:db";
+const TEAMS: TTeam[] = await db.select().from(Team);
+console.log(TEAMS)
+
+export const prerender = false
+
+---
+<AdminLayout title="Teams">
+    <div class="flex h-full ">
+        <aside class=" h-full w-1/5 lg:block hidden bg-slate-700" transition:persist>
+            <nav>
+                <ul>
+                    <li><a href="/admin/teams/add">+ Añadir</a></li>
+                    <li><input type="text" name="" id="a" placeholder="Bucar..."></li>
+                    <li><input type="checkbox" name="" id="">Solo activos</li>
+                </ul>
+            </nav>
+        </aside>
+        <section class="max-h-full h-full lg:w-4/5 w-5/5 overflow-auto">
+            <nav class="lg:hidden flex" transition:persist>
+                <ul class="flex">
+                    <li><a href="/admin/teams/add">+ Añadir</a></li>
+                    <li><input type="text" name="" id="" placeholder="Bucar..."></li>
+                    <li><input type="checkbox" name="" id="">Solo activos</li>
+                </ul>
+            </nav>
+            <div class="w-full max-w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center mt-4">
+                {
+                TEAMS.map((team) => (
+                    <article>
+                        
+                        <h2>{team.name}</h2>
+                        
+                    </article>
+                ))
+                }
+            </div>
+        </section>
+    </div>
+</AdminLayout>

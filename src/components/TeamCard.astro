@@ -8,7 +8,7 @@ interface Props {
 
 const team = Astro.props.team
 
-const url = "/teams/" + team.email
+const url = "/teams/" + team.slug
 ---
 <article class=" p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"> 
     <a href={url} class="w-full flex max-w-sm min-w-100">

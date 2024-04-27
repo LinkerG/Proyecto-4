@@ -1,0 +1,22 @@
+---
+import { db } from "astro:db";
+import TeamCard from "../components/TeamCard.astro";
+import Layout from "../layouts/Layout.astro";
+import type { TTeam } from "../types/TTeam";
+import { Team } from "astro:db";
+//import { TEAMS } from '../consts/Teams' //Usar esto si hay mucha demanda
+
+const TEAMS: TTeam[] = await db.select().from(Team);
+
+export const prerender = false
+
+---
+<Layout title="Teams">
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center mx-6">
+    {
+    TEAMS.map((team) => (
+        <TeamCard team={team} />
+    ))
+    }
+    </section>
+</Layout>
