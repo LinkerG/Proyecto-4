@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../css/navStyles.css";
+import "./css/navStyles.css";
 
-const AdminNav = () => {
+const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
 
     const toggleMenu = () => {
@@ -14,9 +14,10 @@ const AdminNav = () => {
             <div className="hidden lg:flex justify-between items-center p-4 mx-20">
                 <div className=""><h1 className="select-none ml text-2xl">RemCat 🚣‍♂️</h1></div>
                 <ul className="flex">
-                    <li className="px-4 hover:bg-gray-700 text-xl"><a href="/admin">Inicio</a></li>
-                    <li className="px-4 hover:bg-gray-700 text-xl"><a href="/admin/competitions">Competiciones</a></li>
-                    <li className="px-4 hover:bg-gray-700 text-xl"><a href="/admin/teams">Equipos</a></li>
+                    <li className="px-4 hover:bg-gray-700 text-xl"><a href="/">Inicio</a></li>
+                    <li className="px-4 hover:bg-gray-700 text-xl"><a href="/competitions">Competiciones</a></li>
+                    <li className="px-4 hover:bg-gray-700 text-xl"><a href="/results">Resultados</a></li>
+                    <li className="px-4 hover:bg-gray-700 text-xl"><a href="/teams">Equipos</a></li>
                     <li className="px-4 hover:bg-gray-700 text-xl"><a href="/">Salir</a></li>
                 </ul>
             </div>
@@ -33,11 +34,12 @@ const AdminNav = () => {
             </div>
             
             {/* Menú desplegable */}
-            <div style={{ transitionDuration: '0.75s' }} className={`lg:hidden bg-gray-700 text-white fixed left-0 top-full w-full p-4 z-10 transition-transform ${isMenuOpen ? 'translate-y-0' : 'translate-y-full top-minus-6rem'}`}>
+            <div style={{ transitionDuration: '0.75s' }} className={`lg:hidden bg-gray-700 text-white fixed left-0 top-full w-full p-4 z-10 transition-transform ${isMenuOpen ? 'translate-y-0' : 'translate-y-full top-minus-8rem'}`}>
                 <ul>
-                    <li className="py-2"><a href="/admin">Inicio</a></li>
-                    <li className="py-2"><a href="/admin/competitions">Competiciones</a></li>
-                    <li className="py-2"><a href="/admin/teams">Equipos</a></li>
+                    <li className="py-2"><a href="/">Inicio</a></li>
+                    <li className="py-2"><a href="/competitions">Competiciones</a></li>
+                    <li className="py-2"><a href="/results">Resultados</a></li>
+                    <li className="py-2"><a href="/teams">Equipos</a></li>
                     <li className="py-2"><a href="/">Salir</a></li>
                 </ul>
             </div>
@@ -45,4 +47,4 @@ const AdminNav = () => {
     );
 }
 
-export default AdminNav;
+export default Header;
