@@ -6,9 +6,10 @@ import ResultComponent from '../../components/ResultComponent.astro';
 import { organizeResultsByCategoryAndFinal } from '../../helpers/organizeResultsByCategoryAndFinal'
 export const prerender = false
 
-const  competition_id  = parseInt(Astro.params.competition_id) // Si no llega como string
+const  competition_id  = Astro.params.competition_id
 
 const results: TCompetitionResults[] = await db.select().from(Competition_Result)
+
 const filteredResults = results.filter(result => result.competition_id === competition_id);
 // Organiza las competiciones por Categoria => {[semi] => [resultados], [final] => [resultados]}
 const resultsByCategoryAndFinal: {[key: string]: {[key: string]: TCompetitionResults[]}} = organizeResultsByCategoryAndFinal(filteredResults);
