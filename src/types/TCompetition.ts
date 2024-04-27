@@ -7,7 +7,7 @@ export type TCompetition = {
     date:                 Date;
     location:             string;
     image:                string;
-    boat_type_id:         number;
+    boat_type:            string;
     available_categories: TAvailableCategories;
     lines:                number;
     line_distance:        number;

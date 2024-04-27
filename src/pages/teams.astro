@@ -1,9 +1,14 @@
 ---
+import { db } from "astro:db";
 import TeamCard from "../components/TeamCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { TEAMS } from '../consts/Teams'
+import type { TTeam } from "../types/TTeam";
+import { Team } from "astro:db";
+//import { TEAMS } from '../consts/Teams' //Usar esto si hay mucha demanda
 
-export const prerender = true
+const TEAMS: TTeam[] = await db.select().from(Team);
+
+export const prerender = false
 
 ---
 <Layout title="Teams">

@@ -1,8 +1,12 @@
 ---
+import { db } from "astro:db";
 import CompetitionCard from "../components/CompetitionCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { COMPETITIONS } from '../consts/Competitions'
+import type { TCompetition } from "../types/TCompetition";
+import { Competition } from "astro:db";
 
+// import { COMPETITIONS } from '../consts/Competitions' // USar esto si hay mucha demanda
+const COMPETITIONS: TCompetition[] = await db.select().from(Competition);
 const sortedCompetitions = COMPETITIONS.slice().sort((dateA, dateB) => dateA.date.getTime() - dateB.date.getTime());
 ---
 <Layout title="Competiciones">

@@ -3,8 +3,8 @@ import { db } from "astro:db";
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import type { TTeam } from "../../types/TTeam";
 import { Team } from "astro:db";
-const teams: TTeam[] = await db.select().from(Team);
-console.log(teams)
+const TEAMS: TTeam[] = await db.select().from(Team);
+console.log(TEAMS)
 
 export const prerender = false
 
@@ -30,7 +30,7 @@ export const prerender = false
             </nav>
             <div class="w-full max-w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center mt-4">
                 {
-                teams.map((team) => (
+                TEAMS.map((team) => (
                     <article>
                         
                         <h2>{team.name}</h2>
