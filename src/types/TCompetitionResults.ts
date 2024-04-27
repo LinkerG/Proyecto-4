@@ -1,6 +1,6 @@
 export type TCompetitionResults = {
     id:             string;
-    competition_id: number;
+    competition_id: string;
     team_id:        string;
     category:       string;
     isFinal:        boolean;

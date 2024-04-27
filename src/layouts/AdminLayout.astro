@@ -1,6 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import Header from '../components/Header.tsx'
+import AdminNav from '../components/admin/AdminNav';
 interface Props {
 	title: string;
 }
@@ -21,7 +21,7 @@ const { title } = Astro.props;
 	</head>
 	<body class="flex flex-col h-screen">
 		<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
-		<Header client:visible/>
+		<AdminNav client:visible transition:persist/>
 		<main class="flex-grow">
 			<slot />
 		</main>
@@ -32,6 +32,6 @@ const { title } = Astro.props;
 		font-family: system-ui, sans-serif;
 		background: #13151a;
 		background-size: 224px;
-		
+		color-scheme: dark;
 	}
 </style>

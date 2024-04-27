@@ -4,78 +4,78 @@ import { generateUUID } from "../src/helpers/generateUUID"
 export default async function run() {
   await db.insert(Team).values([
   { 
-      email: 'rembadalona@gmail.com', 
-      password: 'test', 
+      slug: 'rembadalona', 
       name: 'Club de Rem Badalona', 
-      logo: 'img/logo/rembadalona.jpg' 
+      logo: 'img/logo/rembadalona.jpg' ,
+      isActive: true,
   },
   { 
-      email: 'nataciobadalona@gmail.com', 
-      password: 'test', 
+      slug: 'nataciobdn', 
       name: 'Club Natació Badalona', 
-      logo: 'img/logo/nataciobadalona.jpg' 
+      logo: 'img/logo/nataciobdn.jpg' ,
+      isActive: true,
   },
   { 
-      email: 'betulo@gmail.com', 
-      password: 'test', 
+      slug: 'betulo', 
       name: 'Club Nàutic Bétulo', 
-      logo: 'img/logo/betulo.jpg' 
+      logo: 'img/logo/betulo.jpg' ,
+      isActive: true,
   },
   { 
-      email: 'aexinoxano@gmail.com', 
-      password: 'test', 
+      slug: 'aexinoxano', 
       name: 'A.E. Xino Xano Deltebre', 
-      logo: 'img/logo/aexinoxano.jpg' 
+      logo: 'img/logo/aexinoxano.jpg' ,
+      isActive: true,
   },
   { 
-      email: 'nauticflix@gmail.com', 
-      password: 'test', 
+      slug: 'flix', 
       name: 'Club Nàutic Flix', 
-      logo: 'img/logo/flix.jpg' 
+      logo: 'img/logo/flix.jpg' ,
+      isActive: true,
   },
   { 
-      email: 'vecambrills@gmail.com', 
-      password: 'test', 
+      slug: 'vecambrills', 
       name: "V.E. Vogadors de Cambrills", 
-      logo: 'img/logo/vecambrills.jpg' 
+      logo: 'img/logo/vecambrills.jpg' ,
+      isActive: true,
   },
   { 
-      email: 'remcambrills@gmail.com', 
-      password: 'test', 
+      slug: 'remcambrills', 
       name: 'Club de Rem Cambrills', 
-      logo: 'img/logo/remcambrills.jpg' 
+      logo: 'img/logo/remcambrills.jpg' ,
+      isActive: true,
   },
   { 
-      email: 'remmataro@gmail.com', 
-      password: 'test', 
+      slug: 'remmataro', 
       name: 'Club de rem Mataró', 
-      logo: 'img/logo/remmataro.jpg' 
+      logo: 'img/logo/remmataro.jpg' ,
+      isActive: true,
   },
   ]);
 
   await db.insert(Competition).values([
     {
       // REGATA LLAUT EJ 3 CALLES
-      id: 1, name: "1ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-04-14"), location: "Castelldefells", 
-      image: "default.png", boat_type_id: 1, available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 3, line_distance: 350, isCancelled: false, isActive: true
+      id: "1", name: "1ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-04-14"), location: "Castelldefells", 
+      image: "default.png", boat_type: "llaut_med", lines: 3, line_distance: 350, isCancelled: false, isActive: true
     },
     {
       // REGATA LLAUT EJ 4 CALLES
-      id: 2, name: "2ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-05-12"), location: "Flix", 
-      image: "default.png", boat_type_id: 1, available_categories: {"I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 4, line_distance: 350, isCancelled: false, isActive: true
+      id: "2", name: "2ª Regata de Lliga de Llaüt", year: "23-24", date: new Date("2024-05-12"), location: "Flix", 
+      image: "default.png", boat_type: "llaut_med", lines: 4, line_distance: 350, isCancelled: false, isActive: true
     },
     {
       // REGATA BATEL EJ
-      id: 3, name: "1ª Regata de Lliga de Batel", year: "23-24", date: new Date("2024-04-13"), location: "Castelldefells", 
-      image: "default.png", boat_type_id: 3, available_categories: {"A":"A", "I":"I", "C":"C", "J":"J", "S":"S", "V":"V"}, lines: 4, line_distance: 500, isCancelled: false, isActive: true
+      id: "3", name: "1ª Regata de Lliga de Batel", year: "23-24", date: new Date("2024-04-13"), location: "Castelldefells", 
+      image: "default.png", boat_type: "batel", lines: 4, line_distance: 500, isCancelled: false, isActive: true
     },
   ])
 
   await db.insert(Competition_Result).values([
     {
       id: generateUUID(),
-      competition_id: 3,
-      team_id: "rembadalona@gmail.com",
+      competition_id: "3",
+      team_id: "rembadalona",
       isFinal: false,
       group: 1,
       category: "SM",
@@ -87,12 +87,12 @@ export default async function run() {
     },
     {
       id: generateUUID(),
-      competition_id: 3,
-      team_id: "rembadalona@gmail.com",
+      competition_id: "3",
+      team_id: "rembadalona",
       isFinal: false,
       group: 1,
       category: "SF",
-      time: "5:45",
+      time: "5:45:00",
       distance: 1400,
       isLeague: true,
       isChampionship: false,
@@ -100,47 +100,8 @@ export default async function run() {
     },
     {
       id: generateUUID(),
-      competition_id: 3,
-      team_id: "rembadalona@gmail.com",
-      isFinal: false,
-      group: 1,
-      category: "JM",
-      time: "DNS",
-      distance: 1400,
-      isLeague: true,
-      isChampionship: false,
-      isActive: true
-    },
-    {
-      id: generateUUID(),
-      competition_id: 3,
-      team_id: "remmataro@gmail.com",
-      isFinal: false,
-      group: 1,
-      category: "SF",
-      time: "5:40",
-      distance: 1400,
-      isLeague: true,
-      isChampionship: false,
-      isActive: true
-    },
-    {
-      id: generateUUID(),
-      competition_id: 3,
-      team_id: "betulo@gmail.com",
-      isFinal: false,
-      group: 1,
-      category: "SF",
-      time: "6:45",
-      distance: 1400,
-      isLeague: true,
-      isChampionship: false,
-      isActive: true
-    },
-    {
-      id: generateUUID(),
-      competition_id: 3,
-      team_id: "remmataro@gmail.com",
+      competition_id: "3",
+      team_id: "rembadalona",
       isFinal: false,
       group: 1,
       category: "JM",
@@ -152,12 +113,12 @@ export default async function run() {
     },
     {
       id: generateUUID(),
-      competition_id: 3,
-      team_id: "rembadalona@gmail.com",
-      isFinal: true,
+      competition_id: "3",
+      team_id: "remmataro",
+      isFinal: false,
       group: 1,
       category: "SF",
-      time: "4:50",
+      time: "5:40:00",
       distance: 1400,
       isLeague: true,
       isChampionship: false,
@@ -165,12 +126,12 @@ export default async function run() {
     },
     {
       id: generateUUID(),
-      competition_id: 3,
-      team_id: "remmataro@gmail.com",
-      isFinal: true,
+      competition_id: "3",
+      team_id: "betulo",
+      isFinal: false,
       group: 1,
       category: "SF",
-      time: "4:40",
+      time: "6:45:00",
       distance: 1400,
       isLeague: true,
       isChampionship: false,
@@ -178,12 +139,51 @@ export default async function run() {
     },
     {
       id: generateUUID(),
-      competition_id: 3,
-      team_id: "betulo@gmail.com",
+      competition_id: "3",
+      team_id: "remmataro",
+      isFinal: false,
+      group: 1,
+      category: "JM",
+      time: "DNS",
+      distance: 1400,
+      isLeague: true,
+      isChampionship: false,
+      isActive: true
+    },
+    {
+      id: generateUUID(),
+      competition_id: "3",
+      team_id: "rembadalona",
       isFinal: true,
       group: 1,
       category: "SF",
-      time: "4:51",
+      time: "4:51:00",
+      distance: 1400,
+      isLeague: true,
+      isChampionship: false,
+      isActive: true
+    },
+    {
+      id: generateUUID(),
+      competition_id: "3",
+      team_id: "remmataro",
+      isFinal: true,
+      group: 1,
+      category: "SF",
+      time: "4:40:00",
+      distance: 1400,
+      isLeague: true,
+      isChampionship: false,
+      isActive: true
+    },
+    {
+      id: generateUUID(),
+      competition_id: "3",
+      team_id: "betulo",
+      isFinal: true,
+      group: 2,
+      category: "SF",
+      time: "4:51:01",
       distance: 1400,
       isLeague: true,
       isChampionship: false,

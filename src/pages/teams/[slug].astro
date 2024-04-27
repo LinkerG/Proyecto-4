@@ -1,0 +1,19 @@
+---
+import { db } from 'astro:db';
+import TeamCard from '../../components/TeamCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import type { TTeam } from '../../types/TTeam';
+import { Team } from 'astro:db';
+//import { TEAMS } from '../../consts/Teams';
+const TEAMS: TTeam[] = await db.select().from(Team);
+export const prerender = false
+
+const { slug } = Astro.params
+
+const [team] = TEAMS.filter((team) => team.slug === slug)
+---
+
+<Layout title={team.name}>
+	<TeamCard team={team}/>
+</Layout>
+
