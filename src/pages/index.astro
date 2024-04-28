@@ -1,9 +1,11 @@
 --- 
 import Layout from '../layouts/Layout.astro';
 import { getCurrentLeagueResults } from "../helpers/getCurrentLeagueResults";
+import { getYearFromDate } from "../helpers/getYearFromDate";
 
-const league = await getCurrentLeagueResults();
+const league = await getCurrentLeagueResults(getYearFromDate(new Date));
 console.log(league);
+
 
 ---
 

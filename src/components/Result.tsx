@@ -1,25 +1,21 @@
 import React from "react";
+import { getTimeInMilliseconds } from "../helpers/getTimeInMilliseconds";
 
 const Result = ({ final, data }) => {
   // Función para convertir el tiempo de formato 'mm:ss:msms' a milisegundos
-  const convertTimeToMilliseconds = (time) => {
-    const [minutes, seconds, milliseconds] = time.split(":");
-    return parseInt(minutes) * 60 * 1000 + parseInt(seconds) * 1000 + parseInt(milliseconds);
-  };
-
   // Filtrar los resultados por fase
   const eliminatoryResults = data.filter((result) => !result.final);
   const finalResults = data.filter((result) => result.final);
 
   // Ordenar los resultados por tiempo dentro de cada fase
   eliminatoryResults.sort((a, b) => {
-    const timeA = convertTimeToMilliseconds(a.time);
-    const timeB = convertTimeToMilliseconds(b.time);
+    const timeA = getTimeInMilliseconds(a.time);
+    const timeB = getTimeInMilliseconds(b.time);
     return timeA - timeB;
   });
   finalResults.sort((a, b) => {
-    const timeA = convertTimeToMilliseconds(a.time);
-    const timeB = convertTimeToMilliseconds(b.time);
+    const timeA = getTimeInMilliseconds(a.time);
+    const timeB = getTimeInMilliseconds(b.time);
     return timeA - timeB;
   });
 

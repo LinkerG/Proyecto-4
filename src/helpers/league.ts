@@ -9,12 +9,34 @@ export class League {
         }
     }
 
-    public addCategoryResult(boat: string, category: [string, string], result: Object){
-        if (!this.boats[boat][category[0]][category[1]]) {
-            this.boats[boat][category[0]][category[1]] = [];
+    public addCategoryResult(boat: string, category: string[], teamId: string, points: number) {
+        const [categoryType, categoryGender] = category;
+        
+        // Verificar si la categoría y el tipo de bote existen en el objeto
+        if (!this.boats[boat][categoryType][categoryGender]) {
+            this.boats[boat][categoryType][categoryGender] = [];
         }
-        this.boats[boat][category[0]][category[1]].push(result);
-    }
+    
+        const teamIndex = this.boats[boat][categoryType][categoryGender]
+            .findIndex(team => team.hasOwnProperty(teamId));
+    
+        if (teamIndex !== -1) {
+            // Si el equipo ya existe, actualizar los puntos
+            const currentPoints = this.boats[boat][categoryType][categoryGender][teamIndex][teamId];
+            this.boats[boat][categoryType][categoryGender][teamIndex][teamId] = currentPoints + points;
+        } else {
+            // Si el equipo no existe, agregar un nuevo objeto al array
+            this.boats[boat][categoryType][categoryGender].push({ [teamId]: points });
+        }
+    
+        // Ordenar el array por puntos descendentes
+        this.boats[boat][categoryType][categoryGender].sort((a, b) => {
+            const pointsA: number = Number(Object.values(a)[0]); // Convertir a number explícitamente
+            const pointsB: number = Number(Object.values(b)[0]); // Convertir a number explícitamente
+            return pointsB - pointsA;
+        });
+    }    
+    
 
     private generateCategories(){
         let categories = {
