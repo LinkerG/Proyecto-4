@@ -6,8 +6,6 @@ import { League } from "./league";
 
 export async function getCurrentLeagueResults() {
     let league = new League;
-    //console.log(league);
-    //league.addCategoryResult("batel", ["A", "M"], );
     
     const date = new Date();
     const year = getYearFromDate(date);
