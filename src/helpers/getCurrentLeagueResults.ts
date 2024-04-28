@@ -14,7 +14,10 @@ export async function getCurrentLeagueResults() {
     const results: TCompetitionResults[] = await db.select().from(Competition_Result)
 
     competitions.forEach(competition => {
-        const competitionResults = results.filter(result => result.competition_id === competition.id);
+        const competitionResults = results.filter(result => {
+            return result.competition_id === competition.id && result.isLeague && result.isFinal;
+        });
+        
         competitionResults.forEach(result => {
             const boatType = competition.boat_type
             const categoryArray = result.category.split("");
