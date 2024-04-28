@@ -7,12 +7,24 @@ import { League } from "./league";
 export async function getCurrentLeagueResults() {
     let league = new League;
     //console.log(league);
-    league.setCategoryResult("batel", ["A", "M"]);
+    //league.addCategoryResult("batel", ["A", "M"], );
     
     const date = new Date();
     const year = getYearFromDate(date);
-    const competitions: TCompetition[] = await db.select().from(Competition)
+    
+    const competitions: TCompetition[] = await db.select().from(Competition).where(eq(Competition.year, year))
     const results: TCompetitionResults[] = await db.select().from(Competition_Result)
 
-    return results;
+    competitions.forEach(competition => {
+        const competitionResults = results.filter(result => result.competition_id === competition.id);
+        competitionResults.forEach(result => {
+            const boatType = competition.boat_type
+            const categoryArray = result.category.split("");
+            const category: [string, string] = [categoryArray[0], categoryArray[1]];
+            const teamResult = { [result.team_id] : [result.time] }
+            league.addCategoryResult(boatType, category, teamResult) 
+        });
+    });
+
+    return league;
 }

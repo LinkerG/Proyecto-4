@@ -9,18 +9,21 @@ export class League {
         }
     }
 
-    public setCategoryResult(boat: string, category: [string, string]){
-        //console.log(this.boats[boat][category[0]][category[1]])
+    public addCategoryResult(boat: string, category: [string, string], result: Object){
+        if (!this.boats[boat][category[0]][category[1]]) {
+            this.boats[boat][category[0]][category[1]] = [];
+        }
+        this.boats[boat][category[0]][category[1]].push(result);
     }
 
     private generateCategories(){
         let categories = {
-            A: { M:{}, F:{} },
-            I: { M:{}, F:{} },
-            C: { M:{}, F:{} },
-            J: { M:{}, F:{} },
-            S: { M:{}, F:{} },
-            V: { M:{}, F:{} },
+            A: { M:[], F:[] },
+            I: { M:[], F:[] },
+            C: { M:[], F:[] },
+            J: { M:[], F:[] },
+            S: { M:[], F:[] },
+            V: { M:[], F:[] },
         }
 
         return categories
