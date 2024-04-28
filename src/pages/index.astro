@@ -1,7 +1,14 @@
 --- 
 import Layout from '../layouts/Layout.astro';
+import { getCurrentLeagueResults } from "../helpers/getCurrentLeagueResults";
+
+const results = await getCurrentLeagueResults();
+console.log(results);
+
 ---
 
 <Layout title="RemCat">
-    INICIO
+    <div>
+        <h1 class=" text-white">INICIO</h1>
+    </div>
 </Layout>
