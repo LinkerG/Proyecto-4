@@ -2,28 +2,24 @@ import React from "react";
 import { getTimeInMilliseconds } from "../helpers/getTimeInMilliseconds";
 
 const Result = ({ final, data }) => {
-  // Función para convertir el tiempo de formato 'mm:ss:msms' a milisegundos
-  // Filtrar los resultados por fase
   const eliminatoryResults = data.filter((result) => !result.final);
   const finalResults = data.filter((result) => result.final);
 
-  // Ordenar los resultados por tiempo dentro de cada fase
   eliminatoryResults.sort((a, b) => {
     const timeA = getTimeInMilliseconds(a.time);
     const timeB = getTimeInMilliseconds(b.time);
     return timeA - timeB;
   });
+
   finalResults.sort((a, b) => {
     const timeA = getTimeInMilliseconds(a.time);
     const timeB = getTimeInMilliseconds(b.time);
     return timeA - timeB;
   });
 
-  // Función para renderizar una tabla de resultados
   const renderResultsTable = (results, phase) => {
     const tandaGroups = {};
 
-    // Agrupar los resultados por número de tanda
     results.forEach((result) => {
       const tanda = result.group;
       if (!tandaGroups[tanda]) {

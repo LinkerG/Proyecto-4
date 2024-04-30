@@ -1,12 +1,14 @@
 export class League {
     boats: Object
-
-    constructor(){
+    year: string
+    constructor(year){
         this.boats = {
             "batel": this.generateCategories(),
             "llaut_med": this.generateCategories(),
             "llagut_cat": this.generateCategories(),
-        }
+        };
+        
+        this.year = year;
     }
 
     public addCategoryResult(boat: string, category: string[], teamId: string, points: number) {

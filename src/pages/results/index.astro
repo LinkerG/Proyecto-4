@@ -4,17 +4,27 @@ import Layout from "../../layouts/Layout.astro";
 import { getYearFromDate } from "../../helpers/getYearFromDate";
 import { getUniqueYears } from "../../helpers/getUniqueYears";
 import { getCurrentLeagueResults } from "../../helpers/getCurrentLeagueResults";
+import AllYearsResult from "../../components/AllYearsResult";
 
 const competitions = await db.select().from(Competition);
-const actualYear = getYearFromDate(new Date);
 const distinctYears = getUniqueYears(competitions);
+const leagues = []
 console.log(distinctYears);
 for (const year of distinctYears) {
     const league = await getCurrentLeagueResults(year)
-    
-    
+    leagues.push(league);
 }
+console.log(leagues);
 ---
 <Layout title="results">
-
+    <AllYearsResult 
+    leagues={leagues}
+    distinctYears={distinctYears}
+    />
 </Layout>
+<!-- <div class="w-full flex justify-end">
+    
+</div>
+<div class="h-full">
+    
+</div> -->

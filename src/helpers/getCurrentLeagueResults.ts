@@ -5,7 +5,7 @@ import { League } from "./league";
 import { getTimeInMilliseconds } from "./getTimeInMilliseconds";
 
 export async function getCurrentLeagueResults(year) {
-    const league = new League();
+    const league = new League(year);
     const competitions: TCompetition[] = await db.select().from(Competition).where(eq(Competition.year, year));
     const results: TCompetitionResults[] = await db.select().from(Competition_Result);
 
