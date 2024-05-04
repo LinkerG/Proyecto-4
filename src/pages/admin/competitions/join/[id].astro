@@ -1,0 +1,109 @@
+---
+import { eq } from "astro:db"
+import { Competition } from "astro:db"
+import { db } from "astro:db"
+import AdminLayout from "../../../../layouts/AdminLayout.astro"
+import type { TCompetition } from "../../../../types/TCompetition"
+import { BOAT_TYPES } from "../../../../consts/BoatTypes"
+
+const id  = Astro.params.id
+
+export const prerender = false
+const competitions: TCompetition[] = await db.select().from(Competition).where(eq(Competition.id, id))
+const competition = competitions[0]
+console.log(competition);
+
+const backUrl = "/admin/competitions/" + id;
+
+---
+<AdminLayout title="apuntar equipos">
+    <div class="flex h-full w-full">
+        <aside class=" h-full w-1/5 lg:block hidden bg-slate-700" transition:persist>
+            <nav>
+                <ul>
+                    <li><a href={backUrl}>Volver</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <section class="max-h-full h-full lg:w-4/5 w-full overflow-auto">
+            <nav class="lg:hidden flex" transition:persist>
+                <ul class="flex">
+                    <li><a href={backUrl}>Volver</a></li>
+                </ul>
+            </nav>
+            <form action="" method="POST" class="w-full max-w-full flex justify-center items-center h-full">
+                <div class="flex w-4/5 h-4/5">
+                    <div class="w-1/2 h-full border border-white ">
+                        <div class="w-full h-1/2 border "></div>
+                        <div class="w-full h-1/2 border ">
+                            <h2>Categorias</h2>
+                            <div class="">
+                                <div class="w-full flex justify-center items-center">
+                                    <label for="">
+                                        Alevin masculino
+                                        <input type="checkbox" name="category" id="AM" value="AM">
+                                    </label>
+                                    <label for="">
+                                        Alevin femenino
+                                        <input type="checkbox" name="category" id="AF" value="AF">
+                                    </label>
+                                </div>
+                                <div class="w-full flex justify-center items-center">
+                                    <label for="">
+                                        Infantil masculino
+                                        <input type="checkbox" name="category" id="IM" value="IM">
+                                    </label>
+                                    <label for="">
+                                        Infantil femenino
+                                        <input type="checkbox" name="category" id="IF" value="IF">
+                                    </label>
+                                </div>
+                                <div class="w-full flex justify-center items-center">
+                                    <label for="">
+                                        Cadete masculino
+                                        <input type="checkbox" name="category" id="CM" value="CM">
+                                    </label>
+                                    <label for="">
+                                        Cadete femenino
+                                        <input type="checkbox" name="category" id="CF" value="CF">
+                                    </label>
+                                </div>
+                                <div class="w-full flex justify-center items-center">
+                                    <label for="">
+                                        Juvenil masculino
+                                        <input type="checkbox" name="category" id="JM" value="JM">
+                                    </label>
+                                    <label for="">
+                                        Juvenil femenino
+                                        <input type="checkbox" name="category" id="JF" value="JF">
+                                    </label>
+                                </div>
+                                <div class="w-full flex justify-center items-center">
+                                    <label for="">
+                                        Sénior masculino
+                                        <input type="checkbox" name="category" id="SM" value="SM">
+                                    </label>
+                                    <label for="">
+                                        Sénior femenino
+                                        <input type="checkbox" name="category" id="SF" value="SF">
+                                    </label>
+                                </div>
+                                <div class="w-full flex justify-center items-center">
+                                    <label for="">
+                                        Veterano masculino
+                                        <input type="checkbox" name="category" id="VM" value="VM">
+                                    </label>
+                                    <label for="">
+                                        Veterano femenino
+                                        <input type="checkbox" name="category" id="VF" value="VF">
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-1/2 h-full border border-white "></div>
+                </div>
+            </form>
+        </section>
+</AdminLayout>

@@ -10,11 +10,10 @@ const id  = Astro.params.id
 
 export const prerender = false
 
-
 import { update } from "../../../models/competition";
 
 if (Astro.request.method === 'POST') {
-  // parse form data
+    // parse form data
     const formData = await Astro.request.formData();
   
     const updated = await update(formData, id);
@@ -27,24 +26,23 @@ if (Astro.request.method === 'POST') {
 
 const competitions: TCompetition[] = await db.select().from(Competition).where(eq(Competition.id, id))
 const competition = competitions[0]
+const joinUrl = "/admin/competitions/join/" + competition.id;
 ---
 <AdminLayout title="Detalles de la competicion">
-    <div class="flex h-full ">
+    <div class="flex h-full w-full">
         <aside class=" h-full w-1/5 lg:block hidden bg-slate-700" transition:persist>
             <nav>
                 <ul>
                     <li><a href="/admin/competitions">Volver</a></li>
-                    <li><input type="text" name="" id="a" placeholder="Bucar..."></li>
-                    <li><input type="checkbox" name="" id="">Solo activos</li>
+                    <li><a href={joinUrl}>Añadir equipos</a></li>
                 </ul>
             </nav>
         </aside>
-        <section class="max-h-full h-full lg:w-4/5 w-5/5 overflow-auto">
+        <section class="max-h-full h-full lg:w-4/5 w-full overflow-auto">
             <nav class="lg:hidden flex" transition:persist>
                 <ul class="flex">
                     <li><a href="/admin/competitions">Volver</a></li>
-                    <li><input type="text" name="" id="" placeholder="Bucar..."></li>
-                    <li><input type="checkbox" name="" id="">Solo activos</li>
+                    <li><a href={joinUrl}>Añadir equipos</a></li>
                 </ul>
             </nav>
             <div class="w-full max-w-full flex justify-center items-center h-full">
