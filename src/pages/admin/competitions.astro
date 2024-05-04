@@ -5,6 +5,7 @@
 import { db, Competition } from "astro:db";
 import AdminLayout from "../../layouts/AdminLayout.astro";
 import type { TCompetition } from "../../types/TCompetition";
+import CompetitionCard from "../../components/CompetitionCard.astro";
 
 const COMPETITIONS: TCompetition[] = await db.select().from(Competition);
 export const prerender = false
@@ -31,11 +32,12 @@ export const prerender = false
             </nav>
             <div class="w-full max-w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center mt-4">
                 {
-                COMPETITIONS.map((team) => (
+                COMPETITIONS.map((competition) => (
                     <article>
-                        
-                        <h2>{team.name}</h2>
-                        
+                        <CompetitionCard 
+                        competition={competition} 
+                        baseUrl = "/admin/competitions/"
+                        />
                     </article>
                 ))
                 }

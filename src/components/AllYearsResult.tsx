@@ -12,8 +12,7 @@ const AllYearsResult = ({ leagues, distinctYears }) => {
                 }
                 </select>
             </div>
-        </div>
-        
+        </div>   
     )
 }
 

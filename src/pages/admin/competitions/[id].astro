@@ -1,31 +1,39 @@
 ---
-// TODO: 
-//  - Subir imagenes 
-import AdminLayout from "../../../layouts/AdminLayout.astro";
+import { eq } from "astro:db"
+import { Competition } from "astro:db"
+import { db } from "astro:db"
+import AdminLayout from "../../../layouts/AdminLayout.astro"
+import type { TCompetition } from "../../../types/TCompetition"
+import { BOAT_TYPES } from "../../../consts/BoatTypes"
 
-import { BOAT_TYPES } from '../../../consts/BoatTypes';
-
-import { add } from "../../../models/competition";
+const id  = Astro.params.id
 
 export const prerender = false
+
+
+import { update } from "../../../models/competition";
 
 if (Astro.request.method === 'POST') {
   // parse form data
   const formData = await Astro.request.formData();
   
-  const inserted = await add(formData);
-
-  if(inserted){
-    console.log("insertado correctamente");
-  }
+  const updated = await update(formData, id);
+  
+    if(updated){
+        
+    }
+    
 }
+
+const competitions: TCompetition[] = await db.select().from(Competition).where(eq(Competition.id, id))
+const competition = competitions[0]
 ---
-<AdminLayout title="Teams">
+<AdminLayout title="Detalles de la competicion">
     <div class="flex h-full ">
         <aside class=" h-full w-1/5 lg:block hidden bg-slate-700" transition:persist>
             <nav>
                 <ul>
-                    <li><a href="/admin/teams">Volver</a></li>
+                    <li><a href="/admin/competitions">Volver</a></li>
                     <li><input type="text" name="" id="a" placeholder="Bucar..."></li>
                     <li><input type="checkbox" name="" id="">Solo activos</li>
                 </ul>
@@ -34,7 +42,7 @@ if (Astro.request.method === 'POST') {
         <section class="max-h-full h-full lg:w-4/5 w-5/5 overflow-auto">
             <nav class="lg:hidden flex" transition:persist>
                 <ul class="flex">
-                    <li><a href="/admin/teams">Volver</a></li>
+                    <li><a href="/admin/competitions">Volver</a></li>
                     <li><input type="text" name="" id="" placeholder="Bucar..."></li>
                     <li><input type="checkbox" name="" id="">Solo activos</li>
                 </ul>
@@ -43,37 +51,33 @@ if (Astro.request.method === 'POST') {
                 <form action="#" method="POST" enctype="multipart/form-data" class="bg-slate-700 w-3/5 rounded-md py-10 px-10">
                     <label class="flex flex-col p-5" for="name">
                         Name
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" value={competition.name}>
                     </label>
                     <label class="flex flex-col p-5" for="date">
                         Fecha
-                        <input type="date" name="date" id="date" min="">
+                        <input type="date" name="date" id="date" min="" value={competition.date.getDate()}> {/* TODO: Arreglar esto */}
                     </label>
                     <label class="flex flex-col p-5" for="location">
                         Ubicacion
-                        <input type="text" name="location" id="location">
+                        <input type="text" name="location" id="location" value={competition.location}>
                     </label>
                     <label class="flex flex-col p-5" for="lines">
                         Calles
-                        <input type="number" name="lines" id="lines" value="4">
+                        <input type="number" name="lines" id="lines" value="4" value={competition.lines}>
                     </label>
                     <label class="flex flex-col p-5" for="line_distance">
                         Distancia entre boyas (m)
-                        <input type="number" name="line_distance" id="line_distance" value="350">
+                        <input type="number" name="line_distance" id="line_distance" value="350" value={competition.line_distance}>
                     </label>
                     <label class="flex flex-col p-5" for="line_distance">
                         Tipo de embarcacion
                         <select name="boat_type" id="boat_type">
-                            {
-                                BOAT_TYPES.map(boat_type => (
-                                    <option value={boat_type.type}>{boat_type.name}</option>
-                                ))
-                            }
+                            {BOAT_TYPES.map(boat_type => (
+                                <option value={boat_type.type} selected={boat_type.type === competition.boat_type}>
+                                    {boat_type.name}
+                                </option>
+                            ))}
                         </select>
-                    </label>
-                    <label class="flex flex-col p-5" for="image">
-                        Image
-                        <input type="file" name="image" id="image">
                     </label>
                     <div class="flex  p-5">
                         <button class="bg-blue-500 rounded px-20 py-2">Enviar</button>
