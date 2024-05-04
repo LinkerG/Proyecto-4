@@ -15,12 +15,12 @@ import { update } from "../../../models/competition";
 
 if (Astro.request.method === 'POST') {
   // parse form data
-  const formData = await Astro.request.formData();
+    const formData = await Astro.request.formData();
   
-  const updated = await update(formData, id);
+    const updated = await update(formData, id);
   
     if(updated){
-        
+        return Astro.redirect("/admin/competitions");
     }
     
 }

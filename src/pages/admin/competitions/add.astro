@@ -11,13 +11,13 @@ export const prerender = false
 
 if (Astro.request.method === 'POST') {
   // parse form data
-  const formData = await Astro.request.formData();
+    const formData = await Astro.request.formData();
   
-  const inserted = await add(formData);
+    const inserted = await add(formData);
 
-  if(inserted){
-    console.log("insertado correctamente");
-  }
+    if(inserted){
+        return Astro.redirect("/admin/teams");
+    }
 }
 ---
 <AdminLayout title="Teams">
