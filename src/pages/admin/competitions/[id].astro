@@ -1,0 +1,87 @@
+---
+import { eq } from "astro:db"
+import { Competition } from "astro:db"
+import { db } from "astro:db"
+import AdminLayout from "../../../layouts/AdminLayout.astro"
+import type { TCompetition } from "../../../types/TCompetition"
+import { BOAT_TYPES } from "../../../consts/BoatTypes"
+
+const id  = Astro.params.id
+
+export const prerender = false
+
+import { update } from "../../../models/competition";
+
+if (Astro.request.method === 'POST') {
+    // parse form data
+    const formData = await Astro.request.formData();
+  
+    const updated = await update(formData, id);
+  
+    if(updated){
+        return Astro.redirect("/admin/competitions");
+    }
+    
+}
+
+const competitions: TCompetition[] = await db.select().from(Competition).where(eq(Competition.id, id))
+const competition = competitions[0]
+const joinUrl = "/admin/competitions/join/" + competition.id;
+---
+<AdminLayout title="Detalles de la competicion">
+    <div class="flex h-full w-full">
+        <aside class=" h-full w-1/5 lg:block hidden bg-slate-700" transition:persist>
+            <nav>
+                <ul>
+                    <li><a href="/admin/competitions">Volver</a></li>
+                    <li><a href={joinUrl}>Añadir equipos</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <section class="max-h-full h-full lg:w-4/5 w-full overflow-auto">
+            <nav class="lg:hidden flex" transition:persist>
+                <ul class="flex">
+                    <li><a href="/admin/competitions">Volver</a></li>
+                    <li><a href={joinUrl}>Añadir equipos</a></li>
+                </ul>
+            </nav>
+            <div class="w-full max-w-full flex justify-center items-center h-full">
+                <form action="#" method="POST" enctype="multipart/form-data" class="bg-slate-700 w-3/5 rounded-md py-10 px-10">
+                    <label class="flex flex-col p-5" for="name">
+                        Name
+                        <input type="text" name="name" id="name" value={competition.name}>
+                    </label>
+                    <label class="flex flex-col p-5" for="date">
+                        Fecha
+                        <input type="date" name="date" id="date" min="" value={competition.date.getDate()}> {/* TODO: Arreglar esto */}
+                    </label>
+                    <label class="flex flex-col p-5" for="location">
+                        Ubicacion
+                        <input type="text" name="location" id="location" value={competition.location}>
+                    </label>
+                    <label class="flex flex-col p-5" for="lines">
+                        Calles
+                        <input type="number" name="lines" id="lines" value="4" value={competition.lines}>
+                    </label>
+                    <label class="flex flex-col p-5" for="line_distance">
+                        Distancia entre boyas (m)
+                        <input type="number" name="line_distance" id="line_distance" value="350" value={competition.line_distance}>
+                    </label>
+                    <label class="flex flex-col p-5" for="line_distance">
+                        Tipo de embarcacion
+                        <select name="boat_type" id="boat_type">
+                            {BOAT_TYPES.map(boat_type => (
+                                <option value={boat_type.type} selected={boat_type.type === competition.boat_type}>
+                                    {boat_type.name}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+                    <div class="flex  p-5">
+                        <button class="bg-blue-500 rounded px-20 py-2">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</AdminLayout>

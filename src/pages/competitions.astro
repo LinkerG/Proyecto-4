@@ -13,7 +13,10 @@ const sortedCompetitions = COMPETITIONS.slice().sort((dateA, dateB) => dateA.dat
     <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center mx-6">
     {
     sortedCompetitions.map((competition) => (
-        <CompetitionCard competition={competition} />
+        <CompetitionCard 
+        competition={competition} 
+        baseUrl = "/results/"
+        />
     ))
     }
     </section>

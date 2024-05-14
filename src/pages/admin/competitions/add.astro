@@ -1,46 +1,23 @@
 ---
 // TODO: 
 //  - Subir imagenes 
-import { db, Competition } from 'astro:db';
 import AdminLayout from "../../../layouts/AdminLayout.astro";
 
-import { generateUUID } from "../../../helpers/generateUUID";
-import { getYearFromDate } from "../../../helpers/getYearFromDate";
+import { BOAT_TYPES } from '../../../consts/BoatTypes';
+
+import { add } from "../../../models/competition";
 
 export const prerender = false
 
 if (Astro.request.method === 'POST') {
   // parse form data
-  const formData = await Astro.request.formData();
-  const uuid = generateUUID();
-  const name = formData.get('name');
-  const date = new Date(formData.get('date').toString()); // Formato a Date
-  const year: string = getYearFromDate(date);
-  const location = formData.get('location');
-  const boat_type = formData.get('boat_type');
-  const lines = formData.get('lines');
-  const line_distance = formData.get('line_distance');
-  console.log(uuid);
+    const formData = await Astro.request.formData();
   
-  if(typeof uuid === 'string' && typeof name === 'string' && typeof location === 'string') {
-    console.log(formData);
-    await db.insert(Competition).values({
-        // @ts-ignore // Esto funciona pero por alguna razón el IDE marca error pero inserta bien y no hay problemas
-         id: uuid,
-         name: name,
-         year: year,
-         date: date, 
-         location: location,
-         image: "",
-         boat_type: boat_type,
-         lines: lines,
-         line_distance: line_distance,
-         isCancelled: false,
-         isActive: true
-        });
-    
-    // FIRE OK POPUP
-  }
+    const inserted = await add(formData);
+
+    if(inserted){
+        return Astro.redirect("/admin/teams");
+    }
 }
 ---
 <AdminLayout title="Teams">
@@ -54,7 +31,7 @@ if (Astro.request.method === 'POST') {
                 </ul>
             </nav>
         </aside>
-        <section class="max-h-full h-full lg:w-4/5 w-5/5 overflow-auto">
+        <section class="max-h-full h-full lg:w-4/5 w-full overflow-auto">
             <nav class="lg:hidden flex" transition:persist>
                 <ul class="flex">
                     <li><a href="/admin/teams">Volver</a></li>
@@ -87,9 +64,11 @@ if (Astro.request.method === 'POST') {
                     <label class="flex flex-col p-5" for="line_distance">
                         Tipo de embarcacion
                         <select name="boat_type" id="boat_type">
-                            <option value="llaut_med">Llaut mediterraneo</option>
-                            <option value="batel">Batel</option>
-                            <option value="llagut_cat">Llagut català</option>
+                            {
+                                BOAT_TYPES.map(boat_type => (
+                                    <option value={boat_type.type}>{boat_type.name}</option>
+                                ))
+                            }
                         </select>
                     </label>
                     <label class="flex flex-col p-5" for="image">
